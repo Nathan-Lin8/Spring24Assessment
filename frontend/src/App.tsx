@@ -1,11 +1,13 @@
+import React from 'react';
 import './App.css';
+import VolunteersTable from './components/VolunteerTable';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <p>Hello World!</p>
+      <VolunteersTable />
     </div>
   );
-}
+};
 
 export default App;
