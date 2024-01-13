@@ -28,8 +28,9 @@ const VolunteersTable: React.FC<VolunteersTableProps> = ({ volunteers, updateVol
   };
 
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof Volunteer) => {
-    setEditedVolunteer({ ...editedVolunteer, [field]: e.target.value });
-  };
+    const value = field === 'status' ? e.target.checked : e.target.value;
+    setEditedVolunteer({ ...editedVolunteer, [field]: value });
+  };  
 
   const saveEdit = (id: string) => {
     updateVolunteer(id, editedVolunteer);
@@ -60,7 +61,7 @@ const VolunteersTable: React.FC<VolunteersTableProps> = ({ volunteers, updateVol
                 <td><input type="text" value={editedVolunteer.phone} onChange={(e) => handleEditChange(e, 'phone')} /></td>
                 <td><input type="text" value={editedVolunteer.email} onChange={(e) => handleEditChange(e, 'email')} /></td>
                 <td><input type="text" value={editedVolunteer.rating} onChange={(e) => handleEditChange(e, 'rating')} /></td>
-                <td><input type="checkbox" checked={editedVolunteer.status} onChange={(e) => handleEditChange(e, 'status')} /></td>
+                <td><input type="checkbox" checked={editedVolunteer.status || false} onChange={(e) => handleEditChange(e, 'status')} /></td>
                 <td>
                   <input 
                     type="text" 
