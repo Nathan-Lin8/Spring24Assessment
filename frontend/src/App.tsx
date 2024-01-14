@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import VolunteersTable from './components/VolunteerTable';
+import Pagination from './components/Pagination';
+
 
 interface Volunteer {
   id: string;
@@ -45,9 +47,18 @@ const App: React.FC = () => {
     setVolunteers(volunteers.filter(volunteer => volunteer.id !== id));
   };
 
+  const volunteersPerPage = 10; // Number of volunteers per page
+const [currentPage, setCurrentPage] = useState<number>(1); // Current page
+
+const totalPages = Math.ceil(volunteers.length / volunteersPerPage);
+
+const handlePageChange = (newPage: number) => {
+  setCurrentPage(newPage);
+};
+
   return (
     <div className="App">
-      <div>
+      <div className="new-volunteer-form">
         <input name="name" placeholder="Name" value={newVolunteer.name || ''} onChange={handleInputChange} />
         <input name="avatar" placeholder="Avatar URL" value={newVolunteer.avatar || ''} onChange={handleInputChange} />
         <input name="phone" placeholder="Phone" value={newVolunteer.phone || ''} onChange={handleInputChange} />
@@ -57,11 +68,18 @@ const App: React.FC = () => {
         <input name="hero_project" placeholder="Hero Project" value={newVolunteer.hero_project || ''} onChange={handleInputChange} />
         <button onClick={addVolunteer}>Add Volunteer</button>
       </div>
-      <VolunteersTable 
-        volunteers={volunteers}
-        updateVolunteer={updateVolunteer}
-        deleteVolunteer={deleteVolunteer}
-      />
+      <VolunteersTable
+      volunteers={volunteers}
+      updateVolunteer={updateVolunteer}
+      deleteVolunteer={deleteVolunteer}
+      page={currentPage}
+      pageSize={volunteersPerPage}
+    />
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={handlePageChange}
+    />
     </div>
   );
 };

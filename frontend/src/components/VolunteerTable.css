@@ -1,57 +1,103 @@
 .volunteers-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.volunteers-table th,
+.volunteers-table td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 4px;
+  font-size: 14px;
+}
+
+.volunteers-table img {
+  width: 100%;
+  max-width: 60px;
+  height: auto;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .volunteers-table,
+  .volunteers-table thead,
+  .volunteers-table tbody,
   .volunteers-table th,
+  .volunteers-table td,
+  .volunteers-table tr {
+    display: block;
+  }
+
+  .volunteers-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .volunteers-table tr {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+  }
+
   .volunteers-table td {
-    border: 1px solid #ddd;
+    border: none;
+    position: relative;
+    padding-left: 10px;
     text-align: left;
-    padding: 8px;
   }
-  
+
+  .volunteers-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+  }
+
+  .volunteers-table td .button-margin {
+    margin-right: 8px;
+  }
+
   .volunteers-table img {
-    width: 100%;
-    max-width: 60px;
-    height: auto;
-    border-radius: 50%;
+    max-width: 40px;
   }
-  
-  /* Responsive design using media queries */
-  @media (max-width: 768px) {
-    /* Adjust table layout for mobile view */
-    .volunteers-table, .volunteers-table thead, .volunteers-table tbody, .volunteers-table th, .volunteers-table td, .volunteers-table tr {
-      display: block;
-    }
-  
-    /* Hide table headers on mobile */
-    .volunteers-table thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-    }
-  
-    .volunteers-table tr { border: 1px solid #ccc; margin-bottom: 5px; }
-  
-    .volunteers-table td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
-    }
-  
-    .volunteers-table td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: bold;
-    }
-  
-    /* Adjust image size on mobile */
-    .volunteers-table img {
-      max-width: 40px; /* Smaller size on mobile */
-    }
+}
+
+.volunteers-table td .button-margin {
+  margin-right: 8px;
+}
+
+.edit-textfield-margin {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.new-volunteer-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .new-volunteer-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left; 
   }
-  
+
+  .new-volunteer-form input {
+    flex: 1; 
+    margin-right: 8px; 
+    max-width: calc(50% - 4px); 
+  }
+
+  .new-volunteer-form button {
+    flex-basis: 100%; 
+    margin-top: 8px;
+  }
+}
