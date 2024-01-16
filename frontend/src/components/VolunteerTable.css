@@ -81,23 +81,29 @@
   justify-content: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  margin-left: 50px; /* Adjust the value as needed */
+  margin-right: 50px;
 }
 
-@media (max-width: 768px) {
+.new-volunteer-form input {
+  flex-grow: 1;
+  min-width: 100px; /* Or any other suitable minimum width */
+  margin-right: 8px;
+}
+
+@media (max-width: 1000px) {
   .new-volunteer-form {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     text-align: left; 
+    grid-template-columns: 1fr;
   }
 
   .new-volunteer-form input {
-    flex: 1; 
-    margin-right: 8px; 
-    max-width: calc(50% - 4px); 
+    width: 100%; /* This makes inputs take full width on small screens */
+    margin-right: 0; /* Adjust margin for small screens */
   }
 
   .new-volunteer-form button {
-    flex-basis: 100%; 
-    margin-top: 8px;
+    width: 100%;
   }
 }
