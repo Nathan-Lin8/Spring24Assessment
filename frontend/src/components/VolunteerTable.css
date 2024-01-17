@@ -81,13 +81,13 @@
   justify-content: center;
   margin-bottom: 20px;
   margin-top: 20px;
-  margin-left: 50px; /* Adjust the value as needed */
+  margin-left: 50px;
   margin-right: 50px;
 }
 
 .new-volunteer-form input {
   flex-grow: 1;
-  min-width: 100px; /* Or any other suitable minimum width */
+  min-width: 100px;
   margin-right: 8px;
 }
 
@@ -99,8 +99,8 @@
   }
 
   .new-volunteer-form input {
-    width: 100%; /* This makes inputs take full width on small screens */
-    margin-right: 0; /* Adjust margin for small screens */
+    width: 100%;
+    margin-right: 0;
   }
 
   .new-volunteer-form button {
