@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate, useNavigation } from 'react-router-dom';
 import "./VolunteerTable.css";
 
 type Volunteer = {
@@ -53,12 +52,6 @@ const VolunteersTable: React.FC<VolunteersTableProps> = ({
   const saveEdit = (id: string) => {
     updateVolunteer(id, editedVolunteer);
     setEditing(null);
-  };
-  const navigate = useNavigate();
-  // ... existing code
-
-  const navigateToNotes = (id: string) => {
-    navigate(`/notes/${id}`);
   };
 
   return (
@@ -155,8 +148,6 @@ const VolunteersTable: React.FC<VolunteersTableProps> = ({
                   >
                     Edit
                   </button>
-                  <button onClick={() => navigateToNotes(volunteer.id)}>Notes</button>
-
                   <button onClick={() => deleteVolunteer(volunteer.id)}>
                     Delete
                   </button>
